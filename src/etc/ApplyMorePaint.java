@@ -1,4 +1,4 @@
-package lv1;
+package etc;
 
 /**
  * 덧칠하기

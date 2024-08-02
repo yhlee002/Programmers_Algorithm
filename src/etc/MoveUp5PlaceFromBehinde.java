@@ -1,4 +1,4 @@
-package lv1;
+package etc;
 
 /**
  * 뒤에서 5등 위로

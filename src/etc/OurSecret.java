@@ -1,4 +1,4 @@
-package lv1;
+package etc;
 
 import java.util.HashSet;
 import java.util.Set;
