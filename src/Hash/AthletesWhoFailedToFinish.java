@@ -1,12 +1,12 @@
-package lv1;
+package Hash;
 
 import java.util.*;
 /**
- * 해시 - 완주하지 못한 선수
+ * 완주하지 못한 선수
  * 효율성 향상을 위해 Map 수 최소화, Set/Iterator 사용 로직 제거
  * https://school.programmers.co.kr/learn/courses/30/lessons/42576
  */
-public class AthletesWhoFailedToFinish_Hash {
+public class AthletesWhoFailedToFinish {
     public static void main(String[] args) {
         String[] participant = {"mislav", "stanko", "mislav", "ana"};
         String[] completion = {"stanko", "ana", "mislav"};

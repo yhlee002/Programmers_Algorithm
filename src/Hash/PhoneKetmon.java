@@ -1,12 +1,12 @@
-package lv1;
+package Hash;
 
 import java.util.*;
 
 /**
- * 해시 - 폰켓몬
+ * 폰켓몬
  * https://school.programmers.co.kr/learn/courses/30/lessons/1845
  */
-public class PhoneKetmon_Hash {
+public class PhoneKetmon {
     public static int solution(int[] nums) {
         int size = nums.length / 2;
         Map<Integer, Integer> map = new HashMap<>();

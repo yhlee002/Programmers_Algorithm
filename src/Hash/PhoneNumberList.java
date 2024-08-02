@@ -1,12 +1,12 @@
-package lv2;
+package Hash;
 
 import java.util.Arrays;
 
 /**
- * 해시 - 전화번호 목록
+ * 전화번호 목록
  * https://school.programmers.co.kr/learn/courses/30/lessons/42577
  */
-public class PhoneNumberList_Hash {
+public class PhoneNumberList {
     public static void main(String[] args) {
         String[] phone_book = {"119", "97674223", "1195524421"};
         boolean result = solution(phone_book);
