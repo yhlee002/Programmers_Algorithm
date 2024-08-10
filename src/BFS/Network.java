@@ -6,7 +6,7 @@ import java.util.*;
  * 네트워크
  * https://school.programmers.co.kr/learn/courses/30/lessons/43162
  */
-public class Network_lv3 {
+public class Network {
     private static int[][] computers;
     private static int[] checked;
     private static int cnt;
@@ -48,7 +48,7 @@ public class Network_lv3 {
     public static void main(String[] args) {
         int[][] arr = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
 
-        Network_lv3 networkLv3 = new Network_lv3();
+        Network networkLv3 = new Network();
         int result = networkLv3.solution(3, arr);
         System.out.println("result: " + result);
     }

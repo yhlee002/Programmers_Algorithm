@@ -4,7 +4,7 @@ package DFS;
  * 타겟 넘버
  * https://school.programmers.co.kr/learn/courses/30/lessons/43165
  */
-public class TargetNumber_lv2 {
+public class TargetNumber {
     private static int[] numbers;
     private static int cnt = 0;
     private static int target;
