@@ -9,71 +9,58 @@ const op_start = "00:15"; // 오프닝 시작 시각
 const op_end = "06:55"; // 오프닝 종료 시간
 const commands = ["prev", "next", "next"]; // 사용자의 입력
 // 예상 결과: 06:55
-function solution(video_len, pos, op_start, op_end, commands) {
-	let result = pos;
 
-	if (op_start.localeCompare(result) <= 0 && op_end.localeCompare(result) >= 0) { // 오프닝 구간인지 확인
-		result = op_end;
+function solution(video_len, pos, op_start, op_end, commands) {
+	const videoLenSec = getSec(video_len);
+	const posSec = getSec(pos);
+	const opStartSec = getSec(op_start);
+	const opEndSec = getSec(op_end);
+
+	let result = posSec;
+
+
+	if (opStartSec <= result && opEndSec >= result) { // 오프닝 구간인지 확인
+		result = opEndSec;
 	}
 
 	for (let command of commands) {
 		switch (command) {
 			case "next":
-				const res = plusTime(result, "00:10");
-				if (res.localeCompare(video_len) > 0) { // 영상 길이보다 값이 커진 경우
-					result = video_len;
+				if (result + 10 > videoLenSec) { // 영상 길이보다 값이 커진 경우
+					result = videoLenSec;
 				} else { // 영상 길이 이내인 경우
-					result = res;
+					result += 10;
 				}
 				break;
 			case "prev":
 			{
-				const res = minusTime(result, "00:10");
-				if (res.localeCompare("00:00") >= 0) { // 영상 길이 이내인 경우
-					result = res;
+				if (result - 10 < 0) { // 영상 길이 이내인 경우
+					result = 0;
 				} else { // 00:00 보다 값이 작아진 경우
-					result = "00:00";
+					result -= 10;
 				}
 				break;
 			}
 		}
 
-		if (op_start.localeCompare(result) <= 0 && op_end.localeCompare(result) >= 0) { // 오프닝 구간인지 확인
-			result = op_end;
+		if (opStartSec <= result && opEndSec >= result) { // 오프닝 구간인지 확인
+			result = opEndSec;
 		}
 	}
 
-	return result;
+	return formatTime(result);
 }
 
-function plusTime(time0, time1) {
-	const time0Min = +time0.split(":")[0];
-	const time0Sec = +time0.split(":")[1];
-	const time1Min = +time1.split(":")[0];
-	const time1Sec = +time1.split(":")[1];
+function getSec(timeStr) {
+	const m = +timeStr.split(":")[0];
+	const s = +timeStr.split(":")[1];
 
-	let min = time0Min + time1Min;
-	let sec = time0Sec + time1Sec;
-
-	if (sec >= 60) {
-		min++;
-		sec -= 60;
-	}
-	return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+	return m * 60 + s;
 }
 
-function minusTime(time0, time1) {
-	const time0Min = +time0.split(":")[0];
-	const time0Sec = +time0.split(":")[1];
-	const time1Min = +time1.split(":")[0];
-	const time1Sec = +time1.split(":")[1];
+function formatTime(sec) {
+	const m = Math.floor(sec / 60);
+	const s = sec % 60;
 
-	let min = time0Min - time1Min;
-	let sec = time0Sec - time1Sec;
-
-	if (sec < 0) {
-		min--;
-		sec += 60;
-	}
-	return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+	return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
